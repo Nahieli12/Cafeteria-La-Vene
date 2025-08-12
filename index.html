@@ -1,11 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafetería La Vene</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <script src="./main.js"></script>
+    <header>
+        <h1>Cafetería La Vene</h1>
+        <button id="cart-btn" aria-label="Abrir carrito">🛒</button>
+    </header>
+
+    <main>
+        <section class="product-card">
+            <img src="./img/redvelvet-pastel.avif" alt="Pastel Red Velvet" />
+            <h2>Pastel Red Velvet</h2>
+            <p>Porción de torta Red Velvet con crema chantillí.</p>
+            <span class="price">$7.500</span>
+            <button class="add-to-cart" data-nombre="Pastel Red Velvet" data-precio="7500">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/medialuna.jpg" alt="Media Luna con Jamón y Queso" />
+            <h2>Media Luna con Jamón y Queso</h2>
+            <p>Clásica medialuna rellena de jamón y queso.</p>
+            <span class="price">$3.800</span>
+            <button class="add-to-cart" data-nombre="Media Luna con Jamón y Queso" data-precio="7800">Agregar al
+                carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/avocadotoast.jpg" alt="Avocado Toast" />
+            <h2>Avocado Toast</h2>
+            <p>Pan tostado con palta fresca y condimentos.</p>
+            <span class="price">$6.200</span>
+            <button class="add-to-cart" data-nombre="Avocado Toast" data-precio="8200">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/croissants.jpg" alt="Croissant" />
+            <h2>Croissant</h2>
+            <p>Hojaldre suave y mantecoso, recién horneado.</p>
+            <span class="price">$3.700</span>
+            <button class="add-to-cart" data-nombre="Croissant" data-precio="7700">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/tortitas.jfif" alt="Tortitas Raspaditas" />
+            <h2>Tortitas Raspaditas</h2>
+            <p>Panecillos suaves con corteza crujiente.</p>
+            <span class="price">$1.100</span>
+            <button class="add-to-cart" data-nombre="Tortitas Raspaditas" data-precio="7600">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/rolls-de-canela.jpg" alt="Rolls de Canela" />
+            <h2>Rolls de Canela</h2>
+            <p>Masa dulce rellena con canela y azúcar.</p>
+            <span class="price">$1.700 c/u</span>
+            <button class="add-to-cart" data-nombre="Rolls de Canela" data-precio="8000">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/chipa.webp" alt="Chipa" />
+            <h2>Chipa</h2>
+            <p>Panecillos de almidón y queso, estilo paraguayo.</p>
+            <span class="price">$1.500 c/u</span>
+            <button class="add-to-cart" data-nombre="Chipa" data-precio="7500">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/chocotorta.png" alt="Chocotorta" />
+            <h2>Chocotorta</h2>
+            <p>Postre frío de galletitas, dulce de leche y queso crema.</p>
+            <span class="price">$8.500</span>
+            <button class="add-to-cart" data-nombre="Chocotorta" data-precio="8500">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/cheesecake.jpg" alt="Cheesecake" />
+            <h2>Cheesecake</h2>
+            <p>Tarta de queso cremosa con base de galleta.</p>
+            <span class="price">$8.200</span>
+            <button class="add-to-cart" data-nombre="Cheesecake" data-precio="8200">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/lemonpie.webp" alt="Lemon Pie" />
+            <h2>Lemon Pie</h2>
+            <p>Tarta de limón con merengue suave.</p>
+            <span class="price">$8.000</span>
+            <button class="add-to-cart" data-nombre="Lemon Pie" data-precio="8000">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/facturas.png" alt="Facturas" />
+            <h2>Facturas</h2>
+            <p>Variedad de masas dulces tradicionales.</p>
+            <span class="price">$7.700 12u</span>
+            <button class="add-to-cart" data-nombre="Facturas" data-precio="7700">Agregar al carrito</button>
+        </section>
+    </main>
+
+    <aside id="cart" class="cart">
+        <button id="close-cart" aria-label="Cerrar carrito">✖</button>
+        <h2>Tu Carrito</h2>
+        <ul id="cart-items"></ul>
+        <p id="empty-cart">Tu carrito está vacío</p>
+        <p id="cart-total" style="font-weight: bold; margin-top: 10px;"></p>
+    </aside>
+
+    <footer>
+        <p>&copy; 2025 Cafetería La Vene. Maqueta hecha por Insfran Nahieli.</p>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
+
 </html>
