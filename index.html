@@ -6,15 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cafetería La Vene</title>
     <link rel="stylesheet" href="style.css" />
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <header>
-        <h1>Cafetería La Vene</h1>
+    <!-- Ventana de Bienvenida -->
+    <div id="welcome-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-welcome" class="close">&times;</span>
+            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="welcome-logo">
+            <h2>¡Bienvenido a Cafetería La Vene!</h2>
+            <p>Regístrate para recibir novedades y promociones exclusivas.</p>
+            <button id="register-btn">Registrarme</button>
+        </div>
+    </div>
+    <header id="header">
+        <div class="logo-container">
+            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="logo">
+            <h1 id="site-title">Cafetería La Vene</h1>
+        </div>
         <button id="cart-btn" aria-label="Abrir carrito">🛒</button>
     </header>
 
-    <main>
+    <main id="product-list">
+        <!-- Productos -->
         <section class="product-card">
             <img src="./img/redvelvet-pastel.avif" alt="Pastel Red Velvet" />
             <h2>Pastel Red Velvet</h2>
@@ -28,7 +44,7 @@
             <h2>Media Luna con Jamón y Queso</h2>
             <p>Clásica medialuna rellena de jamón y queso.</p>
             <span class="price">$3.800</span>
-            <button class="add-to-cart" data-nombre="Media Luna con Jamón y Queso" data-precio="7800">Agregar al
+            <button class="add-to-cart" data-nombre="Media Luna con Jamón y Queso" data-precio="3800">Agregar al
                 carrito</button>
         </section>
 
@@ -37,7 +53,7 @@
             <h2>Avocado Toast</h2>
             <p>Pan tostado con palta fresca y condimentos.</p>
             <span class="price">$6.200</span>
-            <button class="add-to-cart" data-nombre="Avocado Toast" data-precio="8200">Agregar al carrito</button>
+            <button class="add-to-cart" data-nombre="Avocado Toast" data-precio="6200">Agregar al carrito</button>
         </section>
 
         <section class="product-card">
@@ -45,7 +61,7 @@
             <h2>Croissant</h2>
             <p>Hojaldre suave y mantecoso, recién horneado.</p>
             <span class="price">$3.700</span>
-            <button class="add-to-cart" data-nombre="Croissant" data-precio="7700">Agregar al carrito</button>
+            <button class="add-to-cart" data-nombre="Croissant" data-precio="3700">Agregar al carrito</button>
         </section>
 
         <section class="product-card">
@@ -53,23 +69,23 @@
             <h2>Tortitas Raspaditas</h2>
             <p>Panecillos suaves con corteza crujiente.</p>
             <span class="price">$1.100</span>
-            <button class="add-to-cart" data-nombre="Tortitas Raspaditas" data-precio="7600">Agregar al carrito</button>
+            <button class="add-to-cart" data-nombre="Tortitas Raspaditas" data-precio="1100">Agregar al carrito</button>
         </section>
 
         <section class="product-card">
             <img src="./img/rolls-de-canela.jpg" alt="Rolls de Canela" />
             <h2>Rolls de Canela</h2>
             <p>Masa dulce rellena con canela y azúcar.</p>
-            <span class="price">$1.700 c/u</span>
-            <button class="add-to-cart" data-nombre="Rolls de Canela" data-precio="8000">Agregar al carrito</button>
+            <span class="price">$1.700</span>
+            <button class="add-to-cart" data-nombre="Rolls de Canela" data-precio="1700">Agregar al carrito</button>
         </section>
 
         <section class="product-card">
             <img src="./img/chipa.webp" alt="Chipa" />
             <h2>Chipa</h2>
             <p>Panecillos de almidón y queso, estilo paraguayo.</p>
-            <span class="price">$1.500 c/u</span>
-            <button class="add-to-cart" data-nombre="Chipa" data-precio="7500">Agregar al carrito</button>
+            <span class="price">$1.500</span>
+            <button class="add-to-cart" data-nombre="Chipa" data-precio="1500">Agregar al carrito</button>
         </section>
 
         <section class="product-card">
@@ -100,8 +116,40 @@
             <img src="./img/facturas.png" alt="Facturas" />
             <h2>Facturas</h2>
             <p>Variedad de masas dulces tradicionales.</p>
-            <span class="price">$7.700 12u</span>
+            <span class="price">$7.700</span>
             <button class="add-to-cart" data-nombre="Facturas" data-precio="7700">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/café-latte.jfif" alt="Café con Leche" />
+            <h2>Café con Leche</h2>
+            <p>Clásico café con leche espumosa.</p>
+            <span class="price">$1.800</span>
+            <button class="add-to-cart" data-nombre="Café con Leche" data-precio="1800">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/café-americano.jfif" alt="Café Americano" />
+            <h2>Café Americano</h2>
+            <p>Café suave y liviano, estilo americano.</p>
+            <span class="price">$2.100</span>
+            <button class="add-to-cart" data-nombre="Café Americano" data-precio="2100">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/matcha-latte.jfif" alt="Matcha Latte" />
+            <h2>Matcha Latte</h2>
+            <p>Bebida cremosa a base de té verde matcha.</p>
+            <span class="price">$4.200</span>
+            <button class="add-to-cart" data-nombre="Matcha Latte" data-precio="4200">Agregar al carrito</button>
+        </section>
+
+        <section class="product-card">
+            <img src="./img/Tea.jfif" alt="Té a elección" />
+            <h2>Té a elección</h2>
+            <p>Variedades de té: negro, verde o hierbas.</p>
+            <span class="price">$1.800</span>
+            <button class="add-to-cart" data-nombre="Té a elección" data-precio="1800">Agregar al carrito</button>
         </section>
     </main>
 
@@ -111,10 +159,14 @@
         <ul id="cart-items"></ul>
         <p id="empty-cart">Tu carrito está vacío</p>
         <p id="cart-total" style="font-weight: bold; margin-top: 10px;"></p>
+        <button id="empty-btn">Vaciar carrito</button>
     </aside>
 
     <footer>
-        <p>&copy; 2025 Cafetería La Vene. Maqueta hecha por Insfran Nahieli.</p>
+        <div class="footer-content">
+            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="footer-logo">
+            <p>&copy; 2025 Cafetería La Vene. Maqueta hecha por Nahieli Insfran.</p>
+        </div>
     </footer>
 
     <script src="main.js"></script>
