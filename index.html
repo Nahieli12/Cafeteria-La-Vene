@@ -1,175 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cafetería La Vene</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-
 <body>
+
     <!-- Ventana de Bienvenida -->
     <div id="welcome-modal" class="modal">
         <div class="modal-content">
-            <span id="close-welcome" class="close">&times;</span>
-            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="welcome-logo">
+            <img id="welcome-logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
             <h2>¡Bienvenido a Cafetería La Vene!</h2>
-            <p>Regístrate para recibir novedades y promociones exclusivas.</p>
-            <button id="register-btn">Registrarme</button>
+            <p>Disfrutá de nuestros productos ☕🍰</p>
+            <!-- Formulario de registro -->
+            <form id="register-form">
+                <input type="text" id="username" placeholder="Usuario" required style="margin-bottom: 0.5rem; width: 80%; padding: 0.5rem; border-radius: 5px; border:none;">
+                <input type="password" id="password" placeholder="Contraseña" required style="margin-bottom: 0.5rem; width: 80%; padding: 0.5rem; border-radius: 5px; border:none;">
+                <button type="submit" style="padding: 0.5rem 1rem; border:none; border-radius:5px; background-color:#4a101a; color:white; cursor:pointer;">Registrarse</button>
+            </form>
+
+            <button id="close-welcome" style="margin-top: 10px; background-color:#3c1f25; color:white; padding:0.5rem 1rem; border-radius:5px; border:none; cursor:pointer;">Entrar sin registrarse</button>
         </div>
     </div>
-    <header id="header">
+
+    <!-- Header -->
+    <header id="main-header">
         <div class="logo-container">
-            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="logo">
+            <img id="logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
             <h1 id="site-title">Cafetería La Vene</h1>
         </div>
-        <button id="cart-btn" aria-label="Abrir carrito">🛒</button>
+        <!-- Barra de búsqueda centrada -->
+        <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="Buscar producto...">
+            <select id="category-filter">
+                <option value="all">Todas las categorías</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="dulces">Dulces</option>
+                <option value="salados">Salados</option>
+            </select>
+        </div>
+        <button id="cart-btn">🛒 Carrito</button>
     </header>
 
+    <!-- Productos -->
     <main id="product-list">
-        <!-- Productos -->
-        <section class="product-card">
-            <img src="./img/redvelvet-pastel.avif" alt="Pastel Red Velvet" />
-            <h2>Pastel Red Velvet</h2>
-            <p>Porción de torta Red Velvet con crema chantillí.</p>
-            <span class="price">$7.500</span>
-            <button class="add-to-cart" data-nombre="Pastel Red Velvet" data-precio="7500">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/medialuna.jpg" alt="Media Luna con Jamón y Queso" />
-            <h2>Media Luna con Jamón y Queso</h2>
-            <p>Clásica medialuna rellena de jamón y queso.</p>
-            <span class="price">$3.800</span>
-            <button class="add-to-cart" data-nombre="Media Luna con Jamón y Queso" data-precio="3800">Agregar al
-                carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/avocadotoast.jpg" alt="Avocado Toast" />
-            <h2>Avocado Toast</h2>
-            <p>Pan tostado con palta fresca y condimentos.</p>
-            <span class="price">$6.200</span>
-            <button class="add-to-cart" data-nombre="Avocado Toast" data-precio="6200">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/croissants.jpg" alt="Croissant" />
-            <h2>Croissant</h2>
-            <p>Hojaldre suave y mantecoso, recién horneado.</p>
-            <span class="price">$3.700</span>
-            <button class="add-to-cart" data-nombre="Croissant" data-precio="3700">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/tortitas.jfif" alt="Tortitas Raspaditas" />
-            <h2>Tortitas Raspaditas</h2>
-            <p>Panecillos suaves con corteza crujiente.</p>
-            <span class="price">$1.100</span>
-            <button class="add-to-cart" data-nombre="Tortitas Raspaditas" data-precio="1100">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/rolls-de-canela.jpg" alt="Rolls de Canela" />
-            <h2>Rolls de Canela</h2>
-            <p>Masa dulce rellena con canela y azúcar.</p>
-            <span class="price">$1.700</span>
-            <button class="add-to-cart" data-nombre="Rolls de Canela" data-precio="1700">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/chipa.webp" alt="Chipa" />
-            <h2>Chipa</h2>
-            <p>Panecillos de almidón y queso, estilo paraguayo.</p>
-            <span class="price">$1.500</span>
-            <button class="add-to-cart" data-nombre="Chipa" data-precio="1500">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/chocotorta.png" alt="Chocotorta" />
-            <h2>Chocotorta</h2>
-            <p>Postre frío de galletitas, dulce de leche y queso crema.</p>
-            <span class="price">$8.500</span>
-            <button class="add-to-cart" data-nombre="Chocotorta" data-precio="8500">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/cheesecake.jpg" alt="Cheesecake" />
-            <h2>Cheesecake</h2>
-            <p>Tarta de queso cremosa con base de galleta.</p>
-            <span class="price">$8.200</span>
-            <button class="add-to-cart" data-nombre="Cheesecake" data-precio="8200">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/lemonpie.webp" alt="Lemon Pie" />
-            <h2>Lemon Pie</h2>
-            <p>Tarta de limón con merengue suave.</p>
-            <span class="price">$8.000</span>
-            <button class="add-to-cart" data-nombre="Lemon Pie" data-precio="8000">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/facturas.png" alt="Facturas" />
-            <h2>Facturas</h2>
-            <p>Variedad de masas dulces tradicionales.</p>
-            <span class="price">$7.700</span>
-            <button class="add-to-cart" data-nombre="Facturas" data-precio="7700">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/café-latte.jfif" alt="Café con Leche" />
-            <h2>Café con Leche</h2>
-            <p>Clásico café con leche espumosa.</p>
-            <span class="price">$1.800</span>
-            <button class="add-to-cart" data-nombre="Café con Leche" data-precio="1800">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/café-americano.jfif" alt="Café Americano" />
-            <h2>Café Americano</h2>
-            <p>Café suave y liviano, estilo americano.</p>
-            <span class="price">$2.100</span>
-            <button class="add-to-cart" data-nombre="Café Americano" data-precio="2100">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/matcha-latte.jfif" alt="Matcha Latte" />
-            <h2>Matcha Latte</h2>
-            <p>Bebida cremosa a base de té verde matcha.</p>
-            <span class="price">$4.200</span>
-            <button class="add-to-cart" data-nombre="Matcha Latte" data-precio="4200">Agregar al carrito</button>
-        </section>
-
-        <section class="product-card">
-            <img src="./img/Tea.jfif" alt="Té a elección" />
-            <h2>Té a elección</h2>
-            <p>Variedades de té: negro, verde o hierbas.</p>
-            <span class="price">$1.800</span>
-            <button class="add-to-cart" data-nombre="Té a elección" data-precio="1800">Agregar al carrito</button>
-        </section>
+        <!-- Los productos se generan dinámicamente desde app.js -->
     </main>
 
-    <aside id="cart" class="cart">
-        <button id="close-cart" aria-label="Cerrar carrito">✖</button>
-        <h2>Tu Carrito</h2>
-        <ul id="cart-items"></ul>
-        <p id="empty-cart">Tu carrito está vacío</p>
-        <p id="cart-total" style="font-weight: bold; margin-top: 10px;"></p>
-        <button id="empty-btn">Vaciar carrito</button>
+    <!-- Carrito lateral -->
+    <aside class="cart" id="cart">
+        <div class="cart-header">
+            <h2>Tu Carrito</h2>
+            <button id="close-cart" class="close-cart">❌</button>
+            </div>
+            <ul id="cart-items"></ul>
+            <p><strong>Total:</strong> $<span id="total">0</span></p>
+            <button id="empty-btn">Vaciar Carrito</button>
     </aside>
-
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <img src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene" id="footer-logo">
-            <p>&copy; 2025 Cafetería La Vene. Maqueta hecha por Nahieli Insfran.</p>
+            <img id="footer-logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
+            <p>© 2025 Cafetería La Vene. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
-
 </html>
