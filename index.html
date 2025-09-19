@@ -1,74 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafetería La Vene</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- SweetAlert2 para notificaciones -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-    <!-- Ventana de Bienvenida -->
+    <!-- ==========================
+         Header
+    ========================== -->
+    <header id="main-header">
+        <div class="logo-container">
+            <img id="logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene">
+            <h1 id="site-title">Cafetería La Vene</h1>
+        </div>
+        <div class="search-wrapper">
+            <input type="text" id="search-input" placeholder="Buscar...">
+            <select id="category-filter">
+                <option value="all">Todas</option>
+                <option value="dulces">Dulces</option>
+                <option value="salados">Salados</option>
+                <option value="bebidas">Bebidas</option>
+            </select>
+        </div>
+        <button id="cart-btn">Carrito🛒</button>
+    </header>
+
+    <!-- ==========================
+         Main productos
+    ========================== -->
+    <main id="product-list">
+        <!-- Los productos se cargan con JS -->
+    </main>
+
+    <!-- ==========================
+         Carrito lateral
+    ========================== -->
+    <aside class="cart" id="cart">
+        <div class="cart-header">
+            <h2>Carrito</h2>
+            <button class="close-cart" id="close-cart">X</button>
+        </div>
+        <ul id="cart-items"></ul>
+        <div class="cart-total">Total: $<span id="total">0</span></div>
+        <button id="empty-btn">Vaciar carrito</button>
+        <button id="checkout-btn">Terminar compra</button>
+    </aside>
+
+
+    <!-- ==========================
+         Modal bienvenida
+    ========================== -->
     <div id="welcome-modal" class="modal">
         <div class="modal-content">
-            <img id="welcome-logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
-            <h2>¡Bienvenido a Cafetería La Vene!</h2>
-            <p>Disfrutá de nuestros productos ☕🍰</p>
-            <!-- Formulario de registro -->
+            <img id="modal-logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería La Vene">
+            <h2>Bienvenido a Cafetería La Vene</h2>
             <form id="register-form">
-                <input type="text" id="username" placeholder="Usuario" required style="margin-bottom: 0.5rem; width: 80%; padding: 0.5rem; border-radius: 5px; border:none;">
-                <input type="password" id="password" placeholder="Contraseña" required style="margin-bottom: 0.5rem; width: 80%; padding: 0.5rem; border-radius: 5px; border:none;">
-                <button type="submit" style="padding: 0.5rem 1rem; border:none; border-radius:5px; background-color:#4a101a; color:white; cursor:pointer;">Registrarse</button>
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
             </form>
-
-            <button id="close-welcome" style="margin-top: 10px; background-color:#3c1f25; color:white; padding:0.5rem 1rem; border-radius:5px; border:none; cursor:pointer;">Entrar sin registrarse</button>
+            <button id="close-welcome">Cerrar</button>
         </div>
     </div>
 
-    <!-- Header -->
-    <header id="main-header">
-        <div class="logo-container">
-            <img id="logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
-            <h1 id="site-title">Cafetería La Vene</h1>
-        </div>
-        <!-- Barra de búsqueda centrada -->
-        <div class="search-wrapper">
-            <input type="text" id="search-input" placeholder="Buscar producto...">
-            <select id="category-filter">
-                <option value="all">Todas las categorías</option>
-                <option value="bebidas">Bebidas</option>
-                <option value="dulces">Dulces</option>
-                <option value="salados">Salados</option>
-            </select>
-        </div>
-        <button id="cart-btn">🛒 Carrito</button>
-    </header>
-
-    <!-- Productos -->
-    <main id="product-list">
-        <!-- Los productos se generan dinámicamente desde app.js -->
-    </main>
-
-    <!-- Carrito lateral -->
-    <aside class="cart" id="cart">
-        <div class="cart-header">
-            <h2>Tu Carrito</h2>
-            <button id="close-cart" class="close-cart">❌</button>
-            </div>
-            <ul id="cart-items"></ul>
-            <p><strong>Total:</strong> $<span id="total">0</span></p>
-            <button id="empty-btn">Vaciar Carrito</button>
-    </aside>
-    <!-- Footer -->
+    <!-- ==========================
+         Footer
+    ========================== -->
     <footer>
         <div class="footer-content">
-            <img id="footer-logo" src="./img/logo-cafeteria.png" alt="Logo Cafetería" />
-            <p>© 2025 Cafetería La Vene. Todos los derechos reservados.</p>
+            <img id="footer-logo" src="./img/logo-cafeteria.png" alt="Logo Footer">
+            <p>© 2025 Cafetería La Vene</p>
         </div>
     </footer>
 
-    <!-- JS -->
-    <script src="js/app.js"></script>
+    <!-- ==========================
+         JS carrito y modal
+    ========================== -->
+    <script src="app.js"></script>
 </body>
 </html>
+

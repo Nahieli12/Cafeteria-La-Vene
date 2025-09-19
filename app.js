@@ -31,6 +31,7 @@ const cart = document.getElementById("cart");
 const cartItems = document.getElementById("cart-items");
 const totalDisplay = document.getElementById("total");
 const emptyBtn = document.getElementById("empty-btn");
+const checkoutBtn = document.getElementById("checkout-btn");
 const welcomeModal = document.getElementById("welcome-modal");
 const closeWelcome = document.getElementById("close-welcome");
 
@@ -156,6 +157,32 @@ emptyBtn.addEventListener("click", () => {
 });
 
 // ==========================
+// Terminar compra
+// ==========================
+checkoutBtn.addEventListener("click", () => {
+  if(carrito.length === 0) {
+    Swal.fire({
+      icon: 'info',
+      title: 'Tu carrito está vacío',
+      background: '#6b0b1f',
+      color: '#fff'
+    });
+    return;
+  }
+  const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+  Swal.fire({
+    icon: 'success',
+    title: 'Compra realizada',
+    text: `Total a pagar: $${total.toLocaleString("es-AR")}`,
+    background: '#6b0b1f',
+    color: '#fff'
+  });
+  carrito = [];
+  guardarCarrito();
+  mostrarCarrito();
+});
+
+// ==========================
 // Animaciones
 // ==========================
 function animarBoton(btn) {
@@ -167,15 +194,13 @@ function animarBoton(btn) {
   }, 400);
 }
 
+// ==========================
 // Header scroll
+// ==========================
 const header = document.getElementById("main-header");
-
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
-    }
+    if (window.scrollY > 50) header.classList.add("scrolled");
+    else header.classList.remove("scrolled");
 });
 
 // ==========================
@@ -183,7 +208,6 @@ window.addEventListener("scroll", () => {
 // ==========================
 searchInput.addEventListener("input", filtrarProductos);
 categoryFilter.addEventListener("change", filtrarProductos);
-
 function filtrarProductos() {
   const term = searchInput.value.toLowerCase();
   const category = categoryFilter.value;
@@ -198,12 +222,7 @@ function filtrarProductos() {
 // Carrito lateral
 // ==========================
 cartBtn.addEventListener("click", () => cart.classList.toggle("open"));
-const closeCartBtn = document.getElementById("close-cart");
-const cartPanel = document.getElementById("cart");
-
-closeCartBtn.addEventListener("click", () => {
-    cartPanel.classList.remove("open");
-});
+document.getElementById("close-cart").addEventListener("click", () => cart.classList.remove("open"));
 
 // ==========================
 // Modal bienvenida
@@ -217,17 +236,14 @@ closeWelcome.addEventListener("click", () => welcomeModal.style.display = "none"
 mostrarProductos(productos);
 mostrarCarrito();
 
+// ==========================
 // Registro de usuario
-const registerForm = document.getElementById("register-form");
-
-registerForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // evita que recargue la página
+// ==========================
+document.getElementById("register-form").addEventListener("submit", (e) => {
+    e.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
-
-    // Guardar en localStorage (simulación)
     localStorage.setItem("user", JSON.stringify({ username, password }));
-
     Swal.fire({
         title: '¡Registro exitoso!',
         text: `Hola ${username}, ahora recibirás novedades y promociones.`,
@@ -236,8 +252,5 @@ registerForm.addEventListener("submit", (e) => {
         background: '#6b0b1f',
         color: '#fff'
     });
-
-    // Ocultar modal
     welcomeModal.style.display = "none";
 });
-
